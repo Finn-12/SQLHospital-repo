@@ -1,6 +1,7 @@
 # Schema Design
 
 ## Table: Doctors
+````sql
 
 CREATE TABLE Doctors (
         doctor_id INT PRIMARY KEY,
@@ -9,9 +10,10 @@ CREATE TABLE Doctors (
         specialty VARCHAR(50) NOT NULL,
         phone_number VARCHAR(15)
 );
+````
 
 ## Table: Patients
-
+````sql
 CREATE TABLE Patients (
         patient_id INT PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
@@ -21,9 +23,10 @@ CREATE TABLE Patients (
         phone_number VARCHAR(15),
         insurance_no INT NOT NULL
 );
+````
 
 ## Table: Drug
-
+````sql
 CREATE TABLE Drug (
         drug_id INT PRIMARY KEY,
         drug_name VARCHAR(50) NOT NULL,
@@ -36,9 +39,10 @@ CREATE TABLE Drug (
                 FOREIGN KEY (company_id)
                 REFERENCES Drug_company(company_id)
 );
+````
 
 ## Table: Transaction
-
+````sql
 CREATE TABLE Transaction (
      Trans_id INT PRIMARY KEY,
      Trans_date DATE NOT NULL,
@@ -53,9 +57,10 @@ CREATE TABLE Transaction (
                 FOREIGN KEY (patient_id)
                 REFERENCES Patients(patient_id)
 );
+````
 
 ## Table: Prescriptions
-
+````sql
 CREATE TABLE Prescriptions (
         prescription_id INT PRIMARY KEY,
         patient_id INT NOT NULL,
@@ -73,26 +78,29 @@ CREATE TABLE Prescriptions (
                 FOREIGN KEY (doctor_id)
                 REFERENCES doctors(doctor_id)
 );
+````
 
 ## Table: Employee
-
+````sql
 CREATE TABLE Employee (
         employee_id INT PRIMARY KEY,
         first_name VARCHAR(50) NOT NULL,
         last_name VARCHAR(50) NOT NULL,
         phone_number VARCHAR(15)
 );
+````
 
 ## Table: Drug_company
-
+````sql
 CREATE TABLE Drug_company (
         company_id INT PRIMARY KEY,
         company_name VARCHAR(50) NOT NULL,
         phone_number VARCHAR(15)
 );
+````
 
-# Database Construction: Populate Database
-
+## Database Construction: Populate Database
+````sql
 INSERT INTO Doctors (doctor_id, first_name, last_name, specialty, phone_number)
 VALUES
     (1, 'Ha', 'Nguyen', 'Cardiology', '694-569-963'),
@@ -149,3 +157,4 @@ VALUES
     (3, 'Johnson & Johnson', '332-464-782'),
     (4, 'Sanofi', '926-713-204'),
     (5, 'Novartis', '152-332-993 ')
+````
